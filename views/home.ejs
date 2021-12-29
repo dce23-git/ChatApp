@@ -4,10 +4,20 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/uuid/8.3.2/uuid.min.js" integrity="sha512-UNM1njAgOFUa74Z0bADwAq8gbTcqZC8Ej4xPSzpnh0l6KMevwvkBvbldF9uR++qKeJ+MOZHRjV1HZjoRvjDfNQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <title>Document</title>
 </head>
 <body>
     
-    <a href = "/chat">Go to chat room</a>
+    <a href = "/chat" onclick="addId(event)">Go to chat room</a>
+
+    <script>
+        function addId(event){
+            const a = event.target;
+            const id =  uuid.v4();
+            a.href += "/"+id;
+        }
+    </script>
+
 </body>
 </html>

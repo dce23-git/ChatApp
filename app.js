@@ -35,17 +35,19 @@ const data = [
     },
 ]
 
-let auth = false; // login status
+
+let auth  = [];
 
 
-app.get("/login", (req, res) => {
-    res.render("login");
+app.get("/login/:id", (req, res) => {
+    const {id} = req.params;
+    res.render("login", {id : id});
 })
 
 
 app.post("/login", (req, res) => {
 
-    const { user, password } = req.body;
+    const { user, password, id } = req.body;
     console.log(req.body);
 
     if (!user || !password) {
@@ -54,8 +56,8 @@ app.post("/login", (req, res) => {
     else {
         if (data.some(cred => (cred.user == user && cred.password === password)) ) {
             // res.json({ status: "login succesfull" });
-            auth = true;
-            res.redirect("chat");
+            auth[id] = true;
+            res.redirect(`chat/${id}`);
         }
         else {
             res.json({ status: "invalid credentials" });
@@ -64,10 +66,10 @@ app.post("/login", (req, res) => {
 });
 
 
-app.get("/chat", (req, res) => {
-    console.log(auth);
-    if (!auth) {
-        res.redirect("/login");
+app.get("/chat/:id", (req, res) => {
+    const {id} = req.params;
+    if(!auth[id]){
+        res.redirect(`/login/${id}`);
     }
     else res.render("chat");
 })
