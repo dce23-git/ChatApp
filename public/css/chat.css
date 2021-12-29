@@ -1,0 +1,36 @@
+.mine{
+    display: block;
+    margin-left: auto;
+    background-color: lightskyblue;
+    width: 40%;
+    min-height: 30px;
+    border-radius: 0.7rem;
+    padding : 5px;
+    margin-top : 10px;
+    
+}
+
+.other{
+    background-color: lightgreen;
+    width: 40%;
+    min-height: 30px;
+    border-radius: 0.7rem;
+    padding : 10px;
+}
+
+
+.chat-form{
+    display: block;
+    width: 100%;
+    position: absolute;
+    bottom: 0;
+}
+
+.message{
+    width: 90%;
+    height : 50px;
+}
+
+.send{
+    height : 30px;
+}
